@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ANQXFB_Beadando_IFesztival.UzletiLogika;
 using ANQXFB_Beadando_IFesztival.UzletiLogika.Interfaces;
 using static ANQXFB_Beadando_IFesztival.UzletiLogika.FesztivalProgram;
+using static ANQXFB_Beadando_IFesztival.UzletiLogika.Erdekesseg;
 
 namespace ANQXFB_Beadando_IFesztival
 {
@@ -17,7 +18,6 @@ namespace ANQXFB_Beadando_IFesztival
             #region Kezdeti beállítások / paraméterezés
 
             Console.BackgroundColor = ConsoleColor.DarkCyan;
-            int IKulcs = 0;
             BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> KoncertKeresoFa;
             BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> SportKeresoFa;
             BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> CivilKeresoFa;
@@ -92,11 +92,11 @@ namespace ANQXFB_Beadando_IFesztival
             IFesztivalProgram[] CivilProgramok = new IFesztivalProgram[civilDb];
             IFesztivalProgram[] StandUpok = new IFesztivalProgram[standDb];
 
-            
-            SportKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, Sportok);
-            CivilKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, CivilProgramok);
-            StandKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, StandUpok);
-            FoodKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, FoodTruckok);
+            KoncertKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>();
+            SportKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>();
+            CivilKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>();
+            StandKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>();
+            FoodKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>();
 
             koncertDb = 0;
             foodDb = 0;
@@ -112,10 +112,10 @@ namespace ANQXFB_Beadando_IFesztival
                 else if (item is StandUpComedy) { StandUpok[standDb] = item; standDb++; }
                 
             }
-            KoncertKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(, Koncertek);
+            
             foreach (Koncert item in Koncertek)
             {
-                KoncertKeresoFa.Beszuras(item.ErdekessegiSzint,);
+                KoncertKeresoFa.Beszuras(item.ErdekessegiSzint,Koncertek);
             }
             #endregion
 
