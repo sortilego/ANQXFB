@@ -1,4 +1,4 @@
-﻿using ANQXFB_Beadando_IFesztival.UzletiLogika.Interfaces;
+using ANQXFB_Beadando_IFesztival.UzletiLogika.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +59,10 @@ namespace ANQXFB_Beadando_IFesztival.UzletiLogika
         public class BinarisKeresofa<K, T> : IEnumerable<T> where K : IComparable
         {
             FaElem<K, T> gyoker;
+            public BinarisKeresofa()
+            {
+
+            }
 
             public BinarisKeresofa(K kulcs, T tartalom)
             {
