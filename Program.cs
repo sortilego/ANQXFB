@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,15 +18,15 @@ namespace ANQXFB_Beadando_IFesztival
 
             Console.BackgroundColor = ConsoleColor.DarkCyan;
             int IKulcs = 0;
-            BinarisKeresofa<int, IFesztivalProgram[]> KoncertKeresoFa;
-            BinarisKeresofa<int, IFesztivalProgram[]> SportKeresoFa;
-            BinarisKeresofa<int, IFesztivalProgram[]> CivilKeresoFa;
-            BinarisKeresofa<int, IFesztivalProgram[]> FoodKeresoFa;
-            BinarisKeresofa<int, IFesztivalProgram[]> StandKeresoFa;
+            BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> KoncertKeresoFa;
+            BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> SportKeresoFa;
+            BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> CivilKeresoFa;
+            BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> FoodKeresoFa;
+            BinarisKeresofa<Erdekesseg, IFesztivalProgram[]> StandKeresoFa;
 
             LinkedList<IFesztivalProgram> NagyonJok = new LinkedList<IFesztivalProgram>(); // Láncolt lista létrehozás
 
-            GrafSzomszedsagiLista szomszedsagiLista = new GrafSzomszedsagiLista(7); // 0-6
+            GrafSzomszedsagiLista szomszedsagiLista = new GrafSzomszedsagiLista(7); // 0-6 ez micsoda?
             GrafSzomszedsagiMatrix szomszedsagiMatrix = new GrafSzomszedsagiMatrix(7); // 0-6
 
             // Delegálttal oldom meg ugyan azon élek felvételét!
@@ -84,6 +84,7 @@ namespace ANQXFB_Beadando_IFesztival
             #endregion
 
             #region Kersőfába szúrás
+           
 
             IFesztivalProgram[] Koncertek = new IFesztivalProgram[koncertDb];
             IFesztivalProgram[] FoodTruckok = new IFesztivalProgram[foodDb];
@@ -91,18 +92,17 @@ namespace ANQXFB_Beadando_IFesztival
             IFesztivalProgram[] CivilProgramok = new IFesztivalProgram[civilDb];
             IFesztivalProgram[] StandUpok = new IFesztivalProgram[standDb];
 
-            KoncertKeresoFa = new BinarisKeresofa<int, IFesztivalProgram[]>(IKulcs, Koncertek);
-            SportKeresoFa = new BinarisKeresofa<int, IFesztivalProgram[]>(IKulcs, Sportok);
-            CivilKeresoFa = new BinarisKeresofa<int, IFesztivalProgram[]>(IKulcs, CivilProgramok);
-            StandKeresoFa = new BinarisKeresofa<int, IFesztivalProgram[]>(IKulcs, StandUpok);
-            FoodKeresoFa = new BinarisKeresofa<int, IFesztivalProgram[]>(IKulcs, FoodTruckok);
+            
+            SportKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, Sportok);
+            CivilKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, CivilProgramok);
+            StandKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, StandUpok);
+            FoodKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(IKulcs, FoodTruckok);
 
             koncertDb = 0;
             foodDb = 0;
             sportDb = 0;
             civilDb = 0;
             standDb = 0;
-            
             foreach (IFesztivalProgram item in IProgramok)
             {
                 if (item is Koncert) { Koncertek[koncertDb] = item; koncertDb++; }
@@ -111,6 +111,11 @@ namespace ANQXFB_Beadando_IFesztival
                 else if (item is CivilProgram) { CivilProgramok[civilDb] = item;  civilDb++; }
                 else if (item is StandUpComedy) { StandUpok[standDb] = item; standDb++; }
                 
+            }
+            KoncertKeresoFa = new BinarisKeresofa<Erdekesseg, IFesztivalProgram[]>(, Koncertek);
+            foreach (Koncert item in Koncertek)
+            {
+                KoncertKeresoFa.Beszuras(item.ErdekessegiSzint,);
             }
             #endregion
 
