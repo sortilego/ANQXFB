@@ -97,16 +97,20 @@ namespace ANQXFB_Beadando_IFesztival
             StandKeresoFa = new BinarisKeresofa<int, IFesztivalProgram[]>(IKulcs, StandUpok);
             FoodKeresoFa = new BinarisKeresofa<int, IFesztivalProgram[]>(IKulcs, FoodTruckok);
 
-            int j = 0;           
-
+            koncertDb = 0;
+            foodDb = 0;
+            sportDb = 0;
+            civilDb = 0;
+            standDb = 0;
+            
             foreach (IFesztivalProgram item in IProgramok)
             {
-                if (item is Koncert) { Koncertek[j] = item; }
-                else if (item is FoodTruck) { FoodTruckok[j] = item; }
-                else if (item is Sport) { Sportok[j] = item; }
-                else if (item is CivilProgram) { CivilProgramok[j] = item; }
-                else if (item is StandUpComedy) { StandUpok[j] = item; }
-                j++;
+                if (item is Koncert) { Koncertek[koncertDb] = item; koncertDb++; }
+                else if (item is FoodTruck) { FoodTruckok[foodDb] = item; foodDb++; }
+                else if (item is Sport) { Sportok[sportDb] = item; sportDb++; }
+                else if (item is CivilProgram) { CivilProgramok[civilDb] = item;  civilDb++; }
+                else if (item is StandUpComedy) { StandUpok[standDb] = item; standDb++; }
+                
             }
             #endregion
 
